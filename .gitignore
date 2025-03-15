@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+
+# environment variables
+.env
+
+# logs
+*.log
+
+# uploads directory
+/uploads/*
+!uploads/.gitkeep
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db 
