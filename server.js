@@ -10,12 +10,7 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-    origin: [
-        'http://localhost:3000', // Development frontend URL
-        'https://mikan-backend.vercel.app', // Vercel backend URL
-        'https://mikan-frontend.vercel.app', // Expected frontend Vercel URL (if you deploy frontend to Vercel)
-        /\.vercel\.app$/ // Allow all vercel.app subdomains for preview deployments
-    ],
+    origin: '*', // Temporarily allow all origins for testing
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
