@@ -10,7 +10,14 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-    origin: '*', // Temporarily allow all origins for testing
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:5000',
+        'https://mikan-frontend.vercel.app',
+        'https://mikan-react.vercel.app',
+        'http://localhost:4000',
+        'http://127.0.0.1:3000'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
