@@ -13,21 +13,33 @@ const corsOptions = {
     origin: [
         'http://localhost:3000',
         'http://localhost:5000',
+        'http://localhost:4000',
+        'http://localhost:3001',
+        'http://127.0.0.1:3000',
         'https://mikan-frontend.vercel.app',
         'https://mikan-react.vercel.app',
-        'http://localhost:4000',
-        'http://127.0.0.1:3000'
+        'https://mikan-backend.vercel.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
+    exposedHeaders: ['Content-Range', 'X-Content-Range'],
     credentials: true,
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
+    maxAge: 86400 // 24 hours
 };
 
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Additional headers for better CORS support
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    next();
+});
 
 // Log all requests
 app.use((req, res, next) => {
